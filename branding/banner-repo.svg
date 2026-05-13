@@ -1,0 +1,33 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#090C11"/>
+  <path d="M0 710C252 650 487 636 780 705C1041 767 1244 780 1600 620V900H0V710Z" fill="#131922"/>
+  <path d="M120 170H650" stroke="#253142" stroke-width="2" opacity="0.45"/>
+  <path d="M120 704H930" stroke="#253142" stroke-width="2" opacity="0.45"/>
+  <circle cx="120" cy="170" r="8" fill="#39D0C7"/>
+  <circle cx="930" cy="704" r="8" fill="#F46A2F"/>
+  <text x="120" y="338" fill="#FFF6EF" font-family="Segoe UI, Arial, sans-serif" font-size="160" font-weight="800" letter-spacing="6">BIPED ROBOT</text>
+  <text x="126" y="412" fill="#39D0C7" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="4">ESP32 WALKING PLATFORM</text>
+  <text x="120" y="500" fill="#C4CFDE" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="500">Calibrate, sequence poses, and run color-based ball pursuit</text>
+  <text x="120" y="552" fill="#C4CFDE" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="500">from one local control stack.</text>
+  <text x="120" y="640" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="1.2">
+    <tspan fill="#F46A2F">POSE CONTROL</tspan>
+    <tspan fill="#6E7B8C">  •  </tspan>
+    <tspan fill="#39D0C7">VISION PURSUIT</tspan>
+    <tspan fill="#6E7B8C">  •  </tspan>
+    <tspan fill="#FFF6EF">ESP32</tspan>
+  </text>
+  <circle cx="1260" cy="210" r="198" fill="#141B24"/>
+  <circle cx="1260" cy="210" r="176" stroke="#273243" stroke-width="10"/>
+  <circle cx="1260" cy="210" r="132" fill="#0B1016" stroke="#F46A2F" stroke-width="16"/>
+  <path d="M1120 104C1150 79 1189 63 1235 60" stroke="#39D0C7" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+  <path d="M1281 66C1326 75 1364 102 1391 138" stroke="#39D0C7" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="1190" cy="295" r="34" fill="#F46A2F"/>
+  <path d="M1214 271L1278 206" stroke="#F46A2F" stroke-width="36" stroke-linecap="round"/>
+  <circle cx="1294" cy="189" r="26" fill="#FFE0D3"/>
+  <path d="M1312 185L1383 228" stroke="#F46A2F" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="1397" cy="236" r="22" fill="#FFE0D3"/>
+  <path d="M1408 236L1457 205" stroke="#39D0C7" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1407 237L1456 269" stroke="#39D0C7" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1393 216L1410 198" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1395 257L1412 275" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+</svg>

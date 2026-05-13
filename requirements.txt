@@ -1,0 +1,4 @@
+streamlit>=1.44,<2
+requests>=2.31,<3
+opencv-python>=4.11,<5
+numpy>=1.26,<2

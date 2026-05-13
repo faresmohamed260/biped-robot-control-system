@@ -1,0 +1,20 @@
+<svg width="1600" height="480" viewBox="0 0 1600 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="480" rx="36" fill="#0E1116"/>
+  <circle cx="236" cy="240" r="134" fill="#131A23"/>
+  <circle cx="236" cy="240" r="116" stroke="#273243" stroke-width="8"/>
+  <circle cx="236" cy="240" r="88" fill="#0B1016" stroke="#F46A2F" stroke-width="12"/>
+  <path d="M142 150C166 127 199 112 236 110" stroke="#39D0C7" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
+  <path d="M271 114C308 120 340 141 362 172" stroke="#39D0C7" stroke-width="9" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="194" cy="282" r="26" fill="#F46A2F"/>
+  <path d="M211 266L253 223" stroke="#F46A2F" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="266" cy="211" r="19" fill="#FFDCCD"/>
+  <path d="M281 207L324 233" stroke="#F46A2F" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="336" cy="240" r="16" fill="#FFDCCD"/>
+  <path d="M344 240L377 219" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M343 240L376 262" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M333 226L345 214" stroke="#39D0C7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M335 254L347 266" stroke="#39D0C7" stroke-width="8" stroke-linecap="round"/>
+  <text x="446" y="216" fill="#FFF6EF" font-family="Segoe UI, Arial, sans-serif" font-size="120" font-weight="800" letter-spacing="4">BIPED ROBOT</text>
+  <text x="448" y="274" fill="#39D0C7" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="4">ESP32 WALKING PLATFORM</text>
+  <text x="448" y="332" fill="#A3AFBF" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="500">Calibration, pose sequencing, and color-based ball pursuit.</text>
+</svg>

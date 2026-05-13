@@ -1,0 +1,32 @@
+{
+  "link_lengths_mm": {
+    "base_height": 104.6,
+    "shoulder_to_elbow": 133.8,
+    "elbow_to_wrist": 135.0,
+    "wrist_to_gripper_tip": 79.4
+  },
+  "platform": {
+    "width_mm": 240.0,
+    "depth_mm": 240.0,
+    "height_mm": 115.0,
+    "safe_clearance_mm": 5.0,
+    "base_origin": "platform_top_center"
+  },
+  "joint_limits_deg": {
+    "base": [-180.0, 180.0],
+    "shoulder": [-120.0, 120.0],
+    "elbow": [-170.0, 170.0]
+  },
+  "servo_mapping": {
+    "zero_deg": {
+      "base": 40.2,
+      "shoulder": 48.4,
+      "elbow": 72.4
+    },
+    "direction": {
+      "base": 1.0,
+      "shoulder": 1.0,
+      "elbow": -1.0
+    }
+  }
+}

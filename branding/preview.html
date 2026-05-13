@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biped Robot Brand Preview</title>
+  <style>
+    :root {
+      --bg: #090c11;
+      --panel: #111720;
+      --panel-2: #161e29;
+      --line: #273244;
+      --ink: #fff6ef;
+      --muted: #9aa6b7;
+      --orange: #f46a2f;
+      --teal: #39d0c7;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(57, 208, 199, 0.12), transparent 28%),
+        radial-gradient(circle at top left, rgba(244, 106, 47, 0.12), transparent 24%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 780px;
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(22, 30, 41, 0.9), rgba(13, 18, 24, 0.95));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      min-height: 430px;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 32ch;
+    }
+
+    .asset {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      background: #0d1218;
+      border: 1px solid #1f2937;
+      object-fit: contain;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 14px;
+    }
+
+    .chip {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+    }
+
+    .swatch {
+      height: 92px;
+    }
+
+    .meta {
+      padding: 12px 14px 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Biped Robot Branding Pack</h1>
+      <p>A focused identity system for the current six-servo biped project: rugged enough for robotics, clean enough for software, and simple to reuse across docs, local apps, and the control dashboard.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Horizontal Logo</h2>
+        <p>Primary brand lockup for documentation, splash screens, and presentations.</p>
+        <img class="asset" src="./logo-horizontal.svg" alt="Biped Robot horizontal logo">
+      </article>
+      <article class="card">
+        <h2>Logo Mark</h2>
+        <p>Standalone emblem for avatars, app badges, and launcher surfaces.</p>
+        <img class="asset" src="./logo-mark.svg" alt="Biped Robot logo mark">
+      </article>
+      <article class="card">
+        <h2>App Icon</h2>
+        <p>Compact icon tuned for desktop shortcuts and Windows launcher usage.</p>
+        <img class="asset" src="./icon-app.svg" alt="Biped Robot app icon">
+      </article>
+      <article class="card">
+        <h2>Repository Banner</h2>
+        <p>Wide banner for GitHub, docs headers, and project showcase pages.</p>
+        <img class="asset" src="./banner-repo.svg" alt="Biped Robot repository banner">
+      </article>
+      <article class="card">
+        <h2>Social Card</h2>
+        <p>Presentation-ready image for release notes, social posts, and preview cards.</p>
+        <img class="asset" src="./social-card.svg" alt="Biped Robot social card">
+      </article>
+      <article class="card">
+        <h2>Core Palette</h2>
+        <p>The palette balances industrial warmth with control-room clarity.</p>
+        <div class="palette">
+          <div class="chip">
+            <div class="swatch" style="background:#0E1116;"></div>
+            <div class="meta"><strong>Graphite Core</strong>#0E1116</div>
+          </div>
+          <div class="chip">
+            <div class="swatch" style="background:#F46A2F;"></div>
+            <div class="meta"><strong>Utility Orange</strong>#F46A2F</div>
+          </div>
+          <div class="chip">
+            <div class="swatch" style="background:#39D0C7;"></div>
+            <div class="meta"><strong>Control Teal</strong>#39D0C7</div>
+          </div>
+          <div class="chip">
+            <div class="swatch" style="background:#FFF6EF;"></div>
+            <div class="meta"><strong>Warm Signal</strong>#FFF6EF</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

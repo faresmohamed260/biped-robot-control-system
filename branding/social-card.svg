@@ -1,0 +1,24 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="40" fill="#0A0D12"/>
+  <rect x="44" y="44" width="1112" height="542" rx="28" fill="#10151D" stroke="#253041" stroke-width="3"/>
+  <text x="78" y="206" fill="#FFF6EF" font-family="Segoe UI, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="4">BIPED ROBOT</text>
+  <text x="82" y="260" fill="#39D0C7" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">ESP32 WALKING PLATFORM</text>
+  <text x="80" y="350" fill="#CAD4E1" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="500">A local control stack for a six-servo biped:</text>
+  <text x="80" y="397" fill="#CAD4E1" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="500">calibration, vision pursuit, and sequence-driven motion.</text>
+  <text x="80" y="488" fill="#F46A2F" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.6">ROBOTICS</text>
+  <text x="220" y="488" fill="#39D0C7" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.6">CONTROLS</text>
+  <circle cx="949" cy="176" r="124" fill="#141B24"/>
+  <circle cx="949" cy="176" r="110" stroke="#273243" stroke-width="8"/>
+  <circle cx="949" cy="176" r="82" fill="#0B1016" stroke="#F46A2F" stroke-width="10"/>
+  <path d="M861 109C881 91 907 81 937 79" stroke="#39D0C7" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+  <path d="M962 83C991 89 1017 106 1035 130" stroke="#39D0C7" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="912" cy="228" r="22" fill="#F46A2F"/>
+  <path d="M927 214L967 173" stroke="#F46A2F" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="980" cy="162" r="16" fill="#FFE1D4"/>
+  <path d="M992 159L1035 186" stroke="#F46A2F" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="1047" cy="193" r="14" fill="#FFE1D4"/>
+  <path d="M1054 193L1087 173" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1053 194L1086 215" stroke="#39D0C7" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1044 180L1054 170" stroke="#39D0C7" stroke-width="7" stroke-linecap="round"/>
+  <path d="M1045 205L1055 215" stroke="#39D0C7" stroke-width="7" stroke-linecap="round"/>
+</svg>
