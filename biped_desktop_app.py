@@ -244,12 +244,12 @@ class DumeDesktopApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
         self.root.title("Biped Robot Desktop Control")
-        self.root.geometry("1480x920")
-        self.root.minsize(1280, 820)
+        self._configure_window_size()
         self.root.configure(bg=PALETTE_BLACK)
         self._banner_photo: ImageTk.PhotoImage | None = None
         self._logo_photo: ImageTk.PhotoImage | None = None
         self._current_video_label_image: ImageTk.PhotoImage | None = None
+        self._last_video_rgb_image: object | None = None
         self._nav_buttons: dict[str, tk.Button] = {}
         self._panel_frames: dict[str, ttk.Frame] = {}
         self._active_panel = "setup"
@@ -350,6 +350,16 @@ class DumeDesktopApp:
         self.root.after(300, self.auto_connect_robot)
         self.root.protocol("WM_DELETE_WINDOW", self._on_close)
 
+    def _configure_window_size(self) -> None:
+        screen_width = max(1024, self.root.winfo_screenwidth())
+        screen_height = max(700, self.root.winfo_screenheight())
+        window_width = min(1480, max(1024, screen_width - 80))
+        window_height = min(920, max(700, screen_height - 120))
+        minimum_width = min(1120, max(980, screen_width - 160))
+        minimum_height = min(760, max(660, screen_height - 180))
+        self.root.geometry(f"{window_width}x{window_height}")
+        self.root.minsize(minimum_width, minimum_height)
+
     def _configure_theme(self) -> None:
         style = ttk.Style(self.root)
         if "clam" in style.theme_names():
@@ -381,14 +391,14 @@ class DumeDesktopApp:
             banner_path = APP_BANNER_PATH if APP_BANNER_PATH.exists() else MAIN_LOGO_PATH
             if banner_path.exists():
                 banner = Image.open(banner_path)
-                banner.thumbnail((1100, 180))
+                banner.thumbnail((1100, 96))
                 self._banner_photo = ImageTk.PhotoImage(banner)
         except Exception:
             self._banner_photo = None
         try:
             if MAIN_LOGO_PATH.exists():
                 logo = Image.open(MAIN_LOGO_PATH)
-                logo.thumbnail((180, 120))
+                logo.thumbnail((150, 80))
                 self._logo_photo = ImageTk.PhotoImage(logo)
         except Exception:
             self._logo_photo = None
@@ -779,34 +789,35 @@ class DumeDesktopApp:
         controls.grid(row=0, column=0, columnspan=2, sticky="ew", padx=8, pady=8)
         controls.columnconfigure(1, weight=1)
         controls.columnconfigure(3, weight=1)
+        controls.columnconfigure(5, weight=1)
 
         ttk.Label(controls, text="Camera URL").grid(row=0, column=0, padx=8, pady=8, sticky="w")
-        ttk.Entry(controls, textvariable=self.camera_url_var).grid(row=0, column=1, padx=8, pady=8, sticky="ew")
-        ttk.Button(controls, text="Start Feed", command=self.start_feed).grid(row=0, column=2, padx=6, pady=8)
-        ttk.Button(controls, text="Stop Feed", command=self.stop_feed).grid(row=0, column=3, padx=6, pady=8, sticky="w")
+        ttk.Entry(controls, textvariable=self.camera_url_var).grid(row=0, column=1, columnspan=3, padx=8, pady=8, sticky="ew")
+        ttk.Button(controls, text="Start Feed", command=self.start_feed).grid(row=0, column=4, padx=6, pady=8)
+        ttk.Button(controls, text="Stop Feed", command=self.stop_feed).grid(row=0, column=5, padx=6, pady=8, sticky="w")
 
         ttk.Label(controls, text="Robot marker").grid(row=1, column=0, padx=8, pady=8, sticky="w")
         ttk.Combobox(controls, textvariable=self.robot_color_var, state="readonly", values=sorted(ROBOT_COLOR_RANGES.keys())).grid(row=1, column=1, padx=8, pady=8, sticky="ew")
         ttk.Label(controls, text="Ball color").grid(row=1, column=2, padx=8, pady=8, sticky="w")
         ttk.Combobox(controls, textvariable=self.ball_color_var, state="readonly", values=sorted(BALL_COLOR_RANGES.keys())).grid(row=1, column=3, padx=8, pady=8, sticky="ew")
+        ttk.Label(controls, text="Deadband").grid(row=1, column=4, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=5, to=300, textvariable=self.alignment_deadband_var, width=8).grid(row=1, column=5, padx=8, pady=8, sticky="w")
 
-        ttk.Label(controls, text="Deadband (px)").grid(row=2, column=0, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=5, to=300, textvariable=self.alignment_deadband_var, width=8).grid(row=2, column=1, padx=8, pady=8, sticky="w")
-        ttk.Label(controls, text="Collision distance (cm)").grid(row=2, column=2, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=1.0, to=100.0, increment=1.0, textvariable=self.collision_distance_var, width=8).grid(row=2, column=3, padx=8, pady=8, sticky="w")
+        ttk.Label(controls, text="Collision cm").grid(row=2, column=0, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=1.0, to=100.0, increment=1.0, textvariable=self.collision_distance_var, width=8).grid(row=2, column=1, padx=8, pady=8, sticky="w")
 
-        ttk.Label(controls, text="Ball diameter (cm)").grid(row=3, column=0, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=1.0, to=50.0, increment=0.5, textvariable=self.ball_diameter_var, width=8).grid(row=3, column=1, padx=8, pady=8, sticky="w")
-        ttk.Label(controls, text="Min robot area").grid(row=3, column=2, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=100, to=20000, increment=100, textvariable=self.min_robot_area_var, width=8).grid(row=3, column=3, padx=8, pady=8, sticky="w")
+        ttk.Label(controls, text="Ball cm").grid(row=2, column=2, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=1.0, to=50.0, increment=0.5, textvariable=self.ball_diameter_var, width=8).grid(row=2, column=3, padx=8, pady=8, sticky="w")
+        ttk.Label(controls, text="Min robot").grid(row=2, column=4, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=100, to=20000, increment=100, textvariable=self.min_robot_area_var, width=8).grid(row=2, column=5, padx=8, pady=8, sticky="w")
 
-        ttk.Label(controls, text="Min ball area").grid(row=4, column=0, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=20, to=10000, increment=10, textvariable=self.min_ball_area_var, width=8).grid(row=4, column=1, padx=8, pady=8, sticky="w")
-        ttk.Label(controls, text="Pause between actions (ms)").grid(row=4, column=2, padx=8, pady=8, sticky="w")
-        ttk.Spinbox(controls, from_=0, to=5000, increment=50, textvariable=self.pause_between_actions_var, width=8).grid(row=4, column=3, padx=8, pady=8, sticky="w")
+        ttk.Label(controls, text="Min ball").grid(row=3, column=0, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=20, to=10000, increment=10, textvariable=self.min_ball_area_var, width=8).grid(row=3, column=1, padx=8, pady=8, sticky="w")
+        ttk.Label(controls, text="Pause ms").grid(row=3, column=2, padx=8, pady=8, sticky="w")
+        ttk.Spinbox(controls, from_=0, to=5000, increment=50, textvariable=self.pause_between_actions_var, width=8).grid(row=3, column=3, padx=8, pady=8, sticky="w")
 
         action_frame = ttk.Frame(controls)
-        action_frame.grid(row=5, column=0, columnspan=4, padx=8, pady=(4, 8), sticky="ew")
+        action_frame.grid(row=3, column=4, columnspan=2, padx=8, pady=(4, 8), sticky="ew")
         ttk.Button(action_frame, text="Move Forward Once", command=self.run_forward_sequence_once).pack(side="left", padx=4)
         ttk.Button(action_frame, text="Start Autonomous", command=self.start_autonomy).pack(side="left", padx=4)
         ttk.Button(action_frame, text="Stop Autonomous", command=self.stop_autonomy).pack(side="left", padx=4)
@@ -820,11 +831,14 @@ class DumeDesktopApp:
         video_frame.rowconfigure(0, weight=1)
         self.video_label = ttk.Label(video_frame, anchor="center")
         self.video_label.grid(row=0, column=0, sticky="nsew")
+        self.video_label.bind("<Configure>", self._on_video_label_resize)
 
         side_frame = ttk.LabelFrame(self.vision_tab, text="Detection & Motion")
         side_frame.grid(row=1, column=1, sticky="nsew", padx=8, pady=8)
         side_frame.columnconfigure(0, weight=1)
-        ttk.Label(side_frame, textvariable=self.info_var, wraplength=360, justify="left").grid(row=0, column=0, padx=8, pady=8, sticky="ew")
+        self.info_label = ttk.Label(side_frame, textvariable=self.info_var, wraplength=360, justify="left")
+        self.info_label.grid(row=0, column=0, padx=8, pady=8, sticky="ew")
+        side_frame.bind("<Configure>", self._on_detection_panel_resize)
 
         ttk.Label(side_frame, text="Forward sequence").grid(row=1, column=0, padx=8, pady=(12, 2), sticky="w")
         ttk.Entry(side_frame, textvariable=self.sequence_forward_var).grid(row=2, column=0, padx=8, pady=4, sticky="ew")
@@ -1537,6 +1551,26 @@ class DumeDesktopApp:
             pass
         self.root.after(100, self._poll_image_queue)
 
+    def _on_detection_panel_resize(self, event: tk.Event) -> None:
+        wraplength = max(240, event.width - 32)
+        self.info_label.configure(wraplength=wraplength)
+
+    def _on_video_label_resize(self, _event: tk.Event) -> None:
+        self._update_video_preview()
+
+    def _update_video_preview(self) -> None:
+        if self._last_video_rgb_image is None:
+            return
+        width = max(1, self.video_label.winfo_width() - 12)
+        height = max(1, self.video_label.winfo_height() - 12)
+        if width < 32 or height < 32:
+            return
+        image = Image.fromarray(self._last_video_rgb_image)
+        image.thumbnail((width, height), Image.Resampling.LANCZOS)
+        photo = ImageTk.PhotoImage(image)
+        self.current_photo = photo
+        self.video_label.configure(image=photo)
+
     def _render_frame(self, frame: VisionFrame) -> None:
         info = frame.info or {}
         lines = [
@@ -1562,11 +1596,8 @@ class DumeDesktopApp:
 
         if frame.rgb_image is None:
             return
-        image = Image.fromarray(frame.rgb_image)
-        image.thumbnail((980, 720))
-        photo = ImageTk.PhotoImage(image)
-        self.current_photo = photo
-        self.video_label.configure(image=photo)
+        self._last_video_rgb_image = frame.rgb_image
+        self._update_video_preview()
 
     def _on_close(self) -> None:
         self.stop_event.set()
